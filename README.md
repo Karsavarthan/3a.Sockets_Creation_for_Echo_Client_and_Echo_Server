@@ -8,14 +8,33 @@ Sockets Links.
 3. Send message to the client and receive the message from the client using the Socket module in
  server .
 4. Send and receive the message using the send function in socket.
-## PROGRAM:
-##### Developed by:Karsavarthan R R
-##### Register number:212223230100
-![3A-Program](https://github.com/user-attachments/assets/6e05118e-bd0f-4819-b3b7-5532a55ff857)
+## PROGRAM
+```
+CLIENT:
 
-## OUPUT:
-![3A-Output](https://github.com/user-attachments/assets/a7a45e13-5b9b-4c10-9dfc-8f81a78b20f1)
+import socket 
+s=socket.socket() 
+s.connect(('localhost',8000)) 
+while True: 
+    msg=input("Client > ") 
+    s.send(msg.encode()) 
+    print("Server > ",s.recv(1024).decode()) 
 
-## RESULT:
+SERVER:
+
+import socket 
+s=socket.socket() 
+s.bind(('localhost',8000)) 
+s.listen(5) 
+c,addr=s.accept() 
+while True: 
+    ClientMessage=c.recv(1024).decode() 
+    c.send(ClientMessage.encode())
+```
+## OUPUT
+
+![WhatsApp Image 2024-10-14 at 14 05 13_928a62f1](https://github.com/user-attachments/assets/9b4a418c-a21e-4fcc-b57c-47abb7484074)
+
+## RESULT
 Thus, the python program for creating Echo Client and Echo Server using TCP Sockets Links 
 was successfully created and executed.
